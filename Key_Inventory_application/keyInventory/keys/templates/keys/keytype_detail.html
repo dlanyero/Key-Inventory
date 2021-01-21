@@ -1,0 +1,17 @@
+{% extends "keys/keytype_base.html" %}
+
+{% block title %}
+    {{ keytype }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "keys:keytype_list" %}>keytype</a></h1>
+    <h2>{{ keytype }}
+    {% if request.user.is_superuser %}
+    | <a href={% url "keys:keytype_update" keytype.pk %}>Update</a> |
+    <form style="display:inline;" action={% url "keys:keytype_delete" keytype.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keytype }}?')">{% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete" />
+    {% endif %}
+    </form>
+    </h2>
+{% endblock %}

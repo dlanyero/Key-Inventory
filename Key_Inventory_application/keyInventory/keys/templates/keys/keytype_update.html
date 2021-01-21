@@ -1,0 +1,21 @@
+{% extends "keys/keytype_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update {{ keytype }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "keys:keytype_list" %}>keytype</a></h1>
+<h2>Update {{ keytype }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form | crispy }}
+    <input class="btn btn-primary" type="submit" value="Update" />
+</form>
+<a href={% url "keys:keytype_detail" keytype.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "keys:keytype_delete" keytype.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keytype }}?')">{% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete" />
+</form>
+{% endblock %}

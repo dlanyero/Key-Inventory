@@ -1,0 +1,17 @@
+{% extends "keys/key_base.html" %}
+
+{% block title %}
+    {{ key }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "keys:key_list" %}>key</a></h1>
+    <h2>{{ key }}
+    {% if request.user.is_superuser %}
+    | <a href={% url "keys:key_update" key.pk %}>Update</a> |
+    <form style="display:inline;" action={% url "keys:key_delete" key.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ key }}?')">{% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete" />
+    </form>
+    {% endif %}
+    </h2>
+{% endblock %}

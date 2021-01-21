@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if content %}
+    <div>
+        <strong>{{ content.owner }}</strong>
+        <strong>{{ content.date }}</strong>
+        <strong>{{ content.return }}</strong>
+        <strong>{{ content.person }}</strong>
+    </div>
+{% endif %}
+<form method="post" enctype = "multipart/form-data">
+    {% csrf_token %}
+<label> Enter the key id </label>
+<input type="text" name = "key_id" />
+<p> Please ensure that you enter a valid key id </p>
+<button type = "submit"> search </button>
+</form>
+
+{% endblock %}
+

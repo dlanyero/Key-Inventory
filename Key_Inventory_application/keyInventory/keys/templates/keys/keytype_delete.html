@@ -1,0 +1,18 @@
+{% extends "keys/keytype_base.html" %}
+
+{% block title %}
+    Delete {{ keytype }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ keytype }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ keytype }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "keys
+:keytype_detail" keytype.pk %}>Cancel</a>
+
+{% endblock %}

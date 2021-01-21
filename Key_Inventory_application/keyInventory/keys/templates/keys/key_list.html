@@ -1,0 +1,28 @@
+{% extends "keys/key_base.html" %}
+
+{% block title %}
+    Keys
+{% endblock %}
+
+{% block content %}
+    <h1>Keys</h1>
+    {% if request.user.is_superuser %}
+    <h2><a class="btn btn-success" href={% url "keys:key_create" %}>Create new Key</a></h2>
+    {% endif %}
+    <table class="table table-striped">
+    {% for key in key_list %}
+        <tr>
+            <td><a href={% url "keys:key_detail" key.pk %}>{{ key.identifier }}</a></td>
+            <td><a>{{ key.number }}</a></td>
+            <td><a>{{ key.keytype_id }}</a></td>
+            {% if request.user.is_superuser %}
+            <td><a href={% url "keys:key_update" key.pk %}>Update</a></td>
+            <td><form style="display:inline;" action={% url "keys:key_delete" key.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ key }}?')">{% csrf_token %}<input class="btn btn-danger" type="submit" value="Delete" /></form></td>
+            {% endif %}
+        </tr>
+    {% empty %}
+        <li>No keys yet.</li>
+    {% endfor %}
+    </table>
+{% endblock %}
+

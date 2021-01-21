@@ -1,0 +1,17 @@
+{% extends "keys/building_base.html" %}
+
+{% block title %}
+    Delete {{ building }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ building }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ building }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "keys:building_detail" building.pk %}>Cancel</a>
+
+{% endblock %}

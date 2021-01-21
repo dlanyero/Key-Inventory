@@ -1,0 +1,18 @@
+{% extends "keys/key_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create key
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "keys:key_list" %}>key</a></h1>
+<h2>Create key</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form | crispy }}
+    <input class="btn btn-primary" type="submit" value="Create" />
+</form>
+<a href={% url "keys:key_list" %}>Cancel</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "keys/keyissue_base.html" %}
+
+{% block title %}
+    keyissues
+{% endblock %}
+
+{% block content %}
+    <h1>keyissues</h1>
+    {% if request.user.is_superuser %}
+    <h2><a class="btn btn-success" href={% url "keys:keyissue_create" %}>Create new keyissue</a></h2>
+    {% endif %}
+    <table class="table table-striped">
+    {% for keyissue in keyissue_list %}
+        <tr>
+            <td><a href={% url "keys:keyissue_detail" keyissue.pk %}>{{ keyissue.identifier }}</a></td>
+            <td><a>{{ keyissue.key_id }}</a></td>
+            <td><a>{{ keyissue.keystatus_id }}</a></td>
+            <td><a>{{ keyissue.start_date }}</a></td>
+            <td><a>{{ keyissue.End_date }}</a></td>
+            <td><a>{{ keyissue.ownder_id }}</a></td>
+            <td><a>{{ keyissue.person_id }}</a></td>
+            <td><a>{{ keyissue.note }}</a></td>
+            {% if request.user.is_superuser %}
+            <td><a href={% url "keys:keyissue_update" keyissue.pk %}>Update</a></td>
+            <td><form style="display:inline;" action={% url "keys:keyissue_delete" keyissue.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keyissue }}?')">{% csrf_token %}<input class="btn btn-danger" type="submit" value="Delete" /></form></td>
+            {% endif %}
+        </tr>
+    {% empty %}
+        <li>No keyissues yet.</li>
+    {% endfor %}
+    </table>
+{% endblock %}
+

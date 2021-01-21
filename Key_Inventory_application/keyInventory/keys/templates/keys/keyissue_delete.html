@@ -1,0 +1,17 @@
+{% extends "keys/keyissue_base.html" %}
+
+{% block title %}
+    Delete {{ keyissue }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ keyissue }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ keyissue }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "keys:keyissue_detail" keyissue.pk %}>Cancel</a>
+
+{% endblock %}

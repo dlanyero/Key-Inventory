@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if data%}
+    num = 1
+        <table class = "table">
+            <thead>
+                <th scope = col >#</th>
+                <th scope = col >key_id</th>
+                <th scope = col >Date issued</th>
+                <th scope = col >Return date</th>
+#Try this and see if it hold. If it does not, try to see about some other possible solution.
+                <tbody>
+                  {% for object in data %}
+                    <tr>
+                     <th scope = "row"> num </th>
+                     <td> object.key_id </td>
+                     <td> object.start_date </td>
+                     <td> object.End_date </td>
+                    </tr>
+                {% endfor %}
+               </tbody>
+            </thead>
+        </table>
+
+{% else %}
+
+    {{ order }}
+    <form method="post" enctype = "multipart/form-data">
+        {% csrf_token %}
+    <label>Enter the person's id </label>
+    <input type="text" name = "person_id" >
+    <p> Please enter a correct name </p>
+    <button type = "submit"> Upload </button>
+    </form>
+{% endif %}
+{% endblock %}
+

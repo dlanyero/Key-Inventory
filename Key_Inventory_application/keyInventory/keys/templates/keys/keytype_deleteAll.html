@@ -1,0 +1,15 @@
+{% extends "keys/keytype_base.html" %}
+
+{% block title %}
+    Delete all keytype records
+{% endblock %}
+
+{% block content %}
+
+    {{ warning }}
+
+    <form style="display:inline;" action={% url "keys:keytype_deleteAll" %} method="post" onsubmit="return confirm('Are you sure you want to delete all records?')">
+        {% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="Delete All" />
+    </form></td>
+{% endblock %}

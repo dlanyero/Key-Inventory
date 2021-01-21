@@ -1,0 +1,7 @@
+ID,LABEL,ORDER,IS_ACTIVE
+0,Unknown,6,TRUE
+1,Storage,1,TRUE
+2,Department,2,TRUE
+3,Individual,3,TRUE
+4,Lost,4,TRUE
+5,Broken,5,TRUE

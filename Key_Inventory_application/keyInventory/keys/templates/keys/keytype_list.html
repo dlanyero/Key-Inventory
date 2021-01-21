@@ -1,0 +1,30 @@
+{% extends "keys/keytype_base.html" %}
+
+{% block title %}
+    keytype
+{% endblock %}
+
+{% block content %}
+    <h1>keytype</h1>
+    {% if request.user.is_superuser %}
+    <h2><a class="btn btn-success" href={% url "keys:keytype_create" %}>Create new keytype</a></h2>
+    {% endif %}
+    <table class="table table-striped">
+    {% for keytype in keytype_list %}
+        <tr>
+            <td><a href={% url "keys:keytype_detail" keytype.pk %}>{{ keytype.identifier }}</a></td>
+            <td><a>{{ keytype.code }}</a></td>
+            <td><a>{{ keytype.manu_info }}</a></td>
+            <td><a>{{ keytype.description }}</a></td>
+            <td><a>{{ keytype.building_id.identifier}}</a></td>
+            {% if request.user.is_superuser %}
+            <td><a href={% url "keys:keytype_update" keytype.pk %}>Update</a></td>
+            <td><form style="display:inline;" action={% url "keys:keytype_delete" keytype.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keytype }}?')">{% csrf_token %}<input class="btn btn-danger" type="submit" value="Delete" /></form></td>
+            {% endif %}
+        </tr>
+    {% empty %}
+        <li>No keytypes yet.</li>
+    {% endfor %}
+    </table>
+{% endblock %}
+
