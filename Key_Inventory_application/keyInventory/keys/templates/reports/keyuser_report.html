@@ -2,22 +2,22 @@
 
 {% block content %}
 {% if data%}
-    num = 1
         <table class = "table">
             <thead>
                 <th scope = col >#</th>
                 <th scope = col >key_id</th>
                 <th scope = col >Date issued</th>
                 <th scope = col >Return date</th>
-#Try this and see if it hold. If it does not, try to see about some other possible solution.
+
                 <tbody>
                   {% for object in data %}
-                    <tr>
-                     <th scope = "row"> num </th>
-                     <td> object.key_id </td>
-                     <td> object.start_date </td>
-                     <td> object.End_date </td>
-                    </tr>
+                        <tr>
+                         <th scope = "row"> {{ num }} </th>
+                         <td> {{ object.key_id }} </td>
+                         <td> {{ object.start_date }} </td>
+                         <td> {{ object.End_date }} </td>
+                        </tr>
+
                 {% endfor %}
                </tbody>
             </thead>

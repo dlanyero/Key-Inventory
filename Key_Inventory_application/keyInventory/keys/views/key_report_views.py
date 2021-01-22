@@ -1,10 +1,9 @@
 import csv, io
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import render, get_object_or_404, redirect
 from ..models import building, keytype, key, keystatus, keyissue
 from ..forms import buildingForm
-
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 @permission_required("admin.can_add_log_entry")
@@ -44,9 +43,9 @@ def keyuser_report(request):
     person_id = request.POST['person_id']
     print(person_id)
     # You a are going to have more than one form value like it or not.
-    data_set = keyissue.objects.filter(ownder_id = person_id)
-    print(data_set[1])
-    context = {'data':data_set}
+    data_set = keyissue.objects.all().filter(ownder_id = person_id)
+    print(data_set[0])
+    context = {'data':data_set,'num':1}
     return render(request, template, context)
     #Loop through every value in the context from the template and place the values inside a table and then show the table.
 
