@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class = "container">
+
+    <div class = "report-form">
+        <form method="post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <label class = "form-label "><h6>Enter the person's ID: </h6></label>
+        <input type="text" name = "person_id" class = "report-input-border" >
+        <button type = "submit" class = "report-button-primary"> Search </button>
+        </form>
+    </div>
+
 {% if data%}
-        <table class = "table">
+    <div class = 'report-table'>
+        <table class = "table table-bordered">
             <thead>
                 <th scope = col >#</th>
                 <th scope = col >key_id</th>
@@ -11,7 +24,7 @@
 
                 <tbody>
                   {% for object in data %}
-                        <tr>
+                        <tr class = "table-bordered">
                          <th scope = "row"> {{ num }} </th>
                          <td> {{ object.key_id }} </td>
                          <td> {{ object.start_date }} </td>
@@ -21,18 +34,10 @@
                 {% endfor %}
                </tbody>
             </thead>
-        </table>
-
-{% else %}
-
-    {{ order }}
-    <form method="post" enctype = "multipart/form-data">
-        {% csrf_token %}
-    <label>Enter the person's id </label>
-    <input type="text" name = "person_id" >
-    <p> Please enter a correct name </p>
-    <button type = "submit"> Upload </button>
-    </form>
+        </table></div>
 {% endif %}
+
+</div>
+
 {% endblock %}
 

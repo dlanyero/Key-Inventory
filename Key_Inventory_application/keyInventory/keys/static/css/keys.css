@@ -6,3 +6,56 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.header{
+  margin-top: 50px;
+}
+.report-table{
+    margin-top: 50px;
+}
+.report-form{
+    margin-top: 50px;
+}
+
+.table-bordered{
+  border: 1.4px solid #52b9ca;
+}
+.report-button-primary{
+    background-color: #5454a2;
+  color: #ffffff;
+  text-decoration:none;
+    width: 120px;
+  padding:.25em .8em;
+
+  /* this rounds corners */
+  border-radius:25px;
+}
+.report-button-primary2{
+    background-color: #126691;
+  color: #ffffff;
+  text-decoration:none;
+    width: fit-content;
+  padding:.25em .8em;
+
+  /* this rounds corners */
+  border-radius:25px;
+}
+.report-input-border{
+   border: 1.4px solid #5454a2;
+}
+.margin{
+    margin-top: 30px;
+}
+.bottom-margin{
+    margin-bottom: 30px;
+}
+.update{
+    color: black;
+}
+.list-input{
+    border:none !important;
+}
+.main-header{
+    font-size: xx-large;
+    font-width: 20px;
+
+}

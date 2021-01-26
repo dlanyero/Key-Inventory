@@ -22,6 +22,9 @@ from django.conf import settings
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.staticfiles.urls import static
+
+
 
 urlpatterns = [
     url('keys/', include("keys.urls")),

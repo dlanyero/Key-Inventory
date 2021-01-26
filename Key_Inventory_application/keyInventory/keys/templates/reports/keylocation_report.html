@@ -1,21 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if content %}
-    <div>
-        <strong>{{ content.owner }}</strong>
-        <strong>{{ content.date }}</strong>
-        <strong>{{ content.return }}</strong>
-        <strong>{{ content.person }}</strong>
+<div class = "container">
+    <div class = "report-form">
+        <form method="post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <label class = "form-label "><h6>Enter the key ID:  </h6></label>
+            <input type="text" name = "key_id" class = "report-input-border"/>
+            <button type = "submit" class = "report-button-primary"> search </button>
+        </form>
     </div>
-{% endif %}
-<form method="post" enctype = "multipart/form-data">
-    {% csrf_token %}
-<label> Enter the key id </label>
-<input type="text" name = "key_id" />
-<p> Please ensure that you enter a valid key id </p>
-<button type = "submit"> search </button>
-</form>
 
-{% endblock %}
+    {% if content %}
+        <div class = 'report-table'>
+            <table class = "table table-bordered ">
+                <tbody>
+                    <tr class = "table-bordered">
+                        <th>Key owner</th>
+                        <td>{{ content.owner }}</td>
+                    </tr>
+                    <tr class = "table-bordered">
+                        <th>Key issue date</th>
+                        <td>{{ content.date }}</td>
+                    </tr>
+                    <tr class = "table-bordered">
+                        <th>Key return date</th>
+                        <td>{{ content.return }}</td>
+                    </tr>
+                    <tr class = "table-bordered">
+                        <th>Person responsible</th>
+                        <td>{{ content.person }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 
+
+    {% endblock %}
+</div>
