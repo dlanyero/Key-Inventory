@@ -11,7 +11,7 @@
      <div class = "margin">
              <a class = "main-header"> Buildings </a>
         {% if request.user.is_superuser %}
-       <a class="report-button-primary2 bottom-margin" href={% url "keys:building_create" %}>Create New Building</a>
+            <a class="report-button-primary2 bottom-margin" href={% url "keys:building_create" %}>Create New Building</a>
         {% endif %}
      </div>
     <table class="table table-striped table-responsive-md table-hover margin">

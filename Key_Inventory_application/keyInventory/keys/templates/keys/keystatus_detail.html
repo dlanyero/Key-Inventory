@@ -5,15 +5,23 @@
 {% endblock %}
 
 {% block content %}
-    <h1><a href={% url "keys:keystatus_list" %}>keystatus</a></h1>
-    <h2>{{ keystatus }}
-    {% if request.user.is_staff %}
-    | <a href={% url "keys:keystatus_update" keystatus.pk %}>Update</a>
-    {% endif %}
-    {% if request.user.is_superuser %} | 
-    <form style="display:inline;" action={% url "keys:keystatus_delete" keystatus.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keystatus }}?')">{% csrf_token %}
-    <input class="btn btn-danger" type="submit" value="Delete" />
-    </form>
-    {% endif %}
+    <div class = "container">
+        <div class = "margin">
+        <a class = "main-header" href={% url "keys:keystatus_list" %}>keystatus: </a><span>{{ keystatus }}</span>
+
+        </div>
+
+        <div class = "margin">
+            {% if request.user.is_staff %}
+            | <a href={% url "keys:keystatus_update" keystatus.pk %}>Update</a>
+            {% endif %}
+            {% if request.user.is_superuser %} |
+            <form style="display:inline;" action={% url "keys:keystatus_delete" keystatus.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keystatus }}?')">{% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="Delete" />
+            </form>
+            {% endif %}
+        </div>
+
     </h2>
+    </div>
 {% endblock %}

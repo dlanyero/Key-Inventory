@@ -5,27 +5,31 @@
 {% endblock %}
 
 {% block content %}
-    <h1>keystatuss</h1>
-    {% if request.user.is_superuser %}
-    <h2><a class="btn btn-success" href={% url "keys:keystatus_create" %}>Create new keystatus</a></h2>
-    {% endif %}
-    <table class="table table-striped">
-    {% for keystatus in keystatus_list %}
-        <tr>
-            <td><a href={% url "keys:keystatus_detail" keystatus.pk %}>{{ keystatus.identifier }}</a></td>
-            <td><a>{{ keystatus.label }}</a></td>
-            <td><a>{{ keystatus.order }}</a></td>
-            <td><a>{{ keystatus.is_active }}</a></td>
-            {% if request.user.is_staff %}
-            <td><a href={% url "keys:keystatus_update" keystatus.pk %}>Update</a></td>
-            {% endif %}
+    <div class = "container margin">
+        <div class = "margin">
+            <a class = "main-header">keystatuss</a>
             {% if request.user.is_superuser %}
-            <td><form style="display:inline;" action={% url "keys:keystatus_delete" keystatus.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keystatus }}?')">{% csrf_token %}<input class="btn btn-danger" type="submit" value="Delete" /></form></td>
+            <a class="report-button-primary2 bottom-margin" href={% url "keys:keystatus_create" %}>Create new keystatus</a>
             {% endif %}
-        </tr>
-    {% empty %}
-        <li>No keystatus yet.</li>
-    {% endfor %}
-    </table>
+        </div>
+        <table class="table table-striped  table-responsive-md table-hover margin">
+        {% for keystatus in keystatus_list %}
+            <tr>
+                <td><a href={% url "keys:keystatus_detail" keystatus.pk %}>{{ keystatus.identifier }}</a></td>
+                <td><a>{{ keystatus.label }}</a></td>
+                <td><a>{{ keystatus.order }}</a></td>
+                <td><a>{{ keystatus.is_active }}</a></td>
+                {% if request.user.is_staff %}
+                <td><a class = "update" href={% url "keys:keystatus_update" keystatus.pk %}>Update</a></td>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <td><form style="display:inline;" action={% url "keys:keystatus_delete" keystatus.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ keystatus }}?')">{% csrf_token %}<input class="list-input" type="submit" value="Delete" /></form></td>
+                {% endif %}
+            </tr>
+        {% empty %}
+            <li>No keystatus yet.</li>
+        {% endfor %}
+        </table>
+    </div>
 {% endblock %}
 

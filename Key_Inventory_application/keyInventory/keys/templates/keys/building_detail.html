@@ -5,15 +5,20 @@
 {% endblock %}
 
 {% block content %}
-    <h1><a href={% url "keys:building_list" %}>Building</a></h1>
-    
-    <h2>{{ building }}
-    {% if request.user.is_superuser %}
-    | <a href={% url "keys:building_update" building.pk %}>Update</a> |
-    <form style="display:inline;" action={% url "keys:building_delete" building.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ building }}?')">{% csrf_token %}
-    <input class="btn btn-danger" type="submit" value="Delete" />
-    </form>
-    {% endif %}
-    
-    </h2>
+    <div class = "container">
+        <div class = "margin">
+           <a class = "main-header" href={% url "keys:building_list" %}>Building: </a> <span>{{ building }} </span>
+        </div>
+
+        <div class = "margin">
+            {% if request.user.is_superuser %}
+            | <a href={% url "keys:building_update" building.pk %}>Update</a> |
+            <form style="display:inline;" action={% url "keys:building_delete" building.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ building }}?')">{% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="Delete" />
+            </form>
+            {% endif %}
+        </div>
+
+
+    </div>
 {% endblock %}

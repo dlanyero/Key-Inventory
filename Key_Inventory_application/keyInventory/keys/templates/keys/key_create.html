@@ -7,12 +7,20 @@
 {% endblock %}
 
 {% block content %}
-<h1><a href={% url "keys:key_list" %}>key</a></h1>
-<h2>Create key</h2>
+    <div class = "container">
+        <div class = "margin">
+            <a class = "main-header" href={% url "keys:key_list" %}>key: </a> <span>Create key</span>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form | crispy }}
-    <input class="btn btn-primary" type="submit" value="Create" />
-</form>
-<a href={% url "keys:key_list" %}>Cancel</a>
+        </div>
+
+        <div class = "margin">
+        <form action="" method="post">{% csrf_token %}
+            {{ form | crispy }}
+            <br/>
+            <input class="btn btn-primary" type="submit" value="Create" />
+            <a class="btn btn-secondary" href={% url "keys:key_list" %}>Cancel</a>
+        </form>
+
+        </div>
+    </div>
 {% endblock %}

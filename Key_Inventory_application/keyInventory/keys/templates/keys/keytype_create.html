@@ -7,12 +7,18 @@
 {% endblock %}
 
 {% block content %}
-<h1><a href={% url "keys:keytype_list" %}>keytype</a></h1>
-<h2>Create keytype</h2>
+    <div class = "container">
+        <div class = "margin">
+            <a class = "main-header" href={% url "keys:keytype_list" %}>keytype: </a> <span>Create keytype</span>
+        </div>
+        <div class = "margin">
+            <form action="" method="post">{% csrf_token %}
+                {{ form | crispy }}
+                <br/>
+                <input class="btn btn-primary" type="submit" value="Create" />
+                <a class="btn btn-secondary" href={% url "keys:keytype_list" %}>Cancel</a>
+            </form>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form | crispy }}
-    <input class="btn btn-primary" type="submit" value="Create" />
-</form>
-<a href={% url "keys:keytype_list" %}>Cancel</a>
+        </div>
+    </div>
 {% endblock %}

@@ -7,15 +7,25 @@
 {% endblock %}
 
 {% block content %}
-<h1><a href={% url "keys:building_list" %}>Building</a></h1>
-<h2>Update {{ building }}</h2>
+    <div class = "container">
+        <div class = "margin">
+            <a class = "main-header" href={% url "keys:building_list" %}>Building: </a><span>Update {{ building }}</span>
+        </div>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form | crispy }}
-    <input class="btn btn-primary" type="submit" value="Update" />
-</form>
-<a href={% url "keys:building_detail" building.pk %}>Cancel</a>
-<form style="display:inline;" action={% url "keys:building_delete" building.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ building }}?')">{% csrf_token %}
-    <input class="btn btn-danger" type="submit" value="Delete" />
-</form>
+        <div class = "margin">
+            <form action="" method="post">{% csrf_token %}
+                {{ form | crispy }}
+                 <br/>
+                <input class="btn btn-primary" type="submit" value="Update" />
+                <a class="btn btn-secondary"  href={% url "keys:building_detail" building.pk %}>Cancel</a>
+
+                <form style="display:inline;" action={% url "keys:building_delete" building.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ building }}?')">{% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="Delete" />
+
+                </form>
+            </form>
+            <br/>
+
+        </div>
+    </div>
 {% endblock %}
