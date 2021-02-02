@@ -189,13 +189,13 @@ class keystatusForm(forms.ModelForm):
         return is_active
 
     def clean(self):
-        return super(keyForm, self).clean()
+        return super(keystatusForm, self).clean()
 
     def validate_unique(self):
-        return super(keyForm, self).validate_unique()
+        return super(keystatusForm, self).validate_unique()
 
     def save(self, commit=True):
-        return super(keyForm, self).save(commit)
+        return super(keystatusForm, self).save(commit)
 
 
 class keyissueForm(forms.ModelForm):

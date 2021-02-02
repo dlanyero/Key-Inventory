@@ -13,7 +13,7 @@ class building(models.Model):
 
 class keytype(models.Model):
     identifier = models.CharField(max_length=255, unique=True)
-    code = models.CharField(max_length=6, null=False)
+    code = models.CharField(max_length=255, null=False)
     manu_info = models.CharField(max_length=255, null=False)
     description = models.CharField(max_length=255, null=True)
     building_id = models.ForeignKey(building, on_delete=models.SET_NULL, blank=True, null=True)

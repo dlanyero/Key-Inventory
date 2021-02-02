@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import permission_required
 from ..models import building, keytype, key, keystatus, keyissue
 from ..forms import buildingForm
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 
 
 @permission_required("admin.can_add_log_entry")
@@ -22,7 +23,10 @@ def keylocation_report(request):
     print(key_id)
     # You a are going to have more than one form value like it or not.
     # You may need to handle this alittle bit later. Look into the possibility of doing the right thing.
-    data_set = keyissue.objects.get(key_id=key_id)
+    try:
+        data_set = keyissue.objects.get(key_id=key_id)
+    except keyissue.DoesNotExist:
+        return HttpResponse('Exception: Data Not Found')
     print(data_set.key_id)
 
     current_owner = data_set.ownder_id
@@ -43,9 +47,12 @@ def keyuser_report(request):
     person_id = request.POST['person_id']
     print(person_id)
     # You a are going to have more than one form value like it or not.
-    data_set = keyissue.objects.all().filter(ownder_id = person_id)
-    print(data_set[0])
-    context = {'data':data_set,'num':1}
+    try:
+        data_set = keyissue.objects.all().filter(ownder_id = person_id)
+        print(data_set[0])
+        context = {'data':data_set,'num':1}
+    except keyissue.Index:
+        return HttpResponse('Exception: Data Not Found')
     return render(request, template, context)
     #Loop through every value in the context from the template and place the values inside a table and then show the table.
 

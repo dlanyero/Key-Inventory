@@ -7,7 +7,7 @@
 {% block content %}
     <div class = "container margin">
         <div class = "margin">
-            <a class = "main-header">keystatuss</a>
+            <a class = "main-header">keystatus: </a> &emsp; &nbsp;
             {% if request.user.is_superuser %}
             <a class="report-button-primary2 bottom-margin" href={% url "keys:keystatus_create" %}>Create new keystatus</a>
             {% endif %}

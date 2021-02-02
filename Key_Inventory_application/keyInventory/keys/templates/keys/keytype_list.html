@@ -8,7 +8,7 @@
     <div class = "container margin">
 
         <div class = "margin">
-            <a class = "main-header">keytype</a>
+            <a class = "main-header">keytype</a> &emsp; &nbsp;
             {% if request.user.is_superuser %}
             <a class="report-button-primary2 bottom-margin" href={% url "keys:keytype_create" %}>Create new keytype</a>
             {% endif %}

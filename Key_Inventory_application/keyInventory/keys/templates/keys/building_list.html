@@ -9,7 +9,7 @@
 {% block content %}
      <div class = "container margin">
      <div class = "margin">
-             <a class = "main-header"> Buildings </a>
+             <a class = "main-header padding"> Buildings </a> &emsp; &nbsp;
         {% if request.user.is_superuser %}
             <a class="report-button-primary2 bottom-margin" href={% url "keys:building_create" %}>Create New Building</a>
         {% endif %}
